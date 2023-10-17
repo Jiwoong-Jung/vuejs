@@ -11,5 +11,6 @@
     <orderEntry type="library" name="@mdi/font" level="application" />
     <orderEntry type="library" name="vuetify" level="application" />
     <orderEntry type="library" name="vue" level="application" />
+    <orderEntry type="library" name="vuetify-form-base" level="application" />
   </component>
 </module>
