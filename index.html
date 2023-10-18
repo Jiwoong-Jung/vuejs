@@ -27,7 +27,7 @@
             <v-container>
                 <h1 class="display-1 my-5">안녕하세요</h1>
                 <p class="body-2 my-4">주앙커피 입니다.</p>
-                <v-text-field label="Label"></v-text-field><v-btn>검색</v-btn>
+                <v-text-field label="Label"></v-text-field><v-btn v-on:click="test2">검색</v-btn>
                 <v-container>
                 <v-row>
                     <v-col>
@@ -113,7 +113,15 @@
                     console.log(res);
                 })
 
+            },
+            test2: function() {
+                alert("나온다");
+                axios.get('http://localhost:8887/?bookTitle=2').then(function (res) {
+                    console.log(res);
+                })
+
             }
+
         }
     });
 
