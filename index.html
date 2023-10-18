@@ -6,6 +6,27 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <title>주앙커피</title>
+    <style>
+        .v-application {
+            font-family: 'NanumBarunGothic', sans-serif !important;
+        }
+        @font-face {
+            font-family:'NanumBarunGothic';
+            src: url('./assets/fonts/NanumBarunGothic.ttf') format('truetype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family:'NanumBarunGothic';
+            src: url('./assets/fonts/NanumBarunGothicLight.ttf') format('truetype');
+            font-weight: 300;
+        }
+        @font-face {
+            font-family:'NanumBarunGothic';
+            src: url('./assets/fonts/NanumBarunGothicBold.ttf') format('truetype');
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -13,7 +34,7 @@
         <!-- 앱 바 색상을 primary로 설정하고 fixed로 위치 고정 -->
         <v-app-bar app color="primary" dark fixed>
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
-            <v-toolbar-title>마스터 페이지</v-toolbar-title>
+            <v-toolbar-title>주앙커피</v-toolbar-title>
             <!-- 우측에 추가메뉴 아이콘을 넣기 위해 v-spacer 엘리먼트 사용 -->
             <v-spacer></v-spacer>
             <v-btn icon>
@@ -25,10 +46,68 @@
         <v-main>
             <v-container>
                 <h1 class="display-1 my-5">안녕하세요</h1>
-                <p class="body-2 my-4">마스터 페이지 입니다.</p>
+                <p class="body-2 my-4">주앙커피 입니다.</p>
+                <v-text-field label="Label"></v-text-field><v-btn>검색</v-btn>
+                <v-container>
+                <v-row>
+                    <v-col>
+                            <v-card max-width="200">
+                                <v-img
+                                        src="./img/gabea1.png"
+                                ></v-img>
+                            </v-card>
+                            <v-card-text>
+                                <h2 class="title text--primary mb-2 v-application">아메리카노 커피</h2>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-btn color="green white--text">주문</v-btn>
+                            </v-card-actions>
+                    </v-col>
+                    <v-col>
+                            <v-card max-width="200">
+                                <v-img
+                                        src="./img/gabea2.png"
+                                ></v-img>
+                            </v-card>
+                            <v-card-text>
+                                <h2 class="title text--primary mb-2">헤이즐럿아메리카노 커피</h2>
+                            </v-card-text>
+                            <v-card-actions>
+                                <v-btn color="warning white--text">주문</v-btn>
+                            </v-card-actions>
+                    </v-col>
+                    <v-col>
+                        <v-card max-width="200">
+                            <v-img
+                                    src="./img/gabea3.png"
+                            ></v-img>
+                        </v-card>
+                        <v-card-text>
+                            <h2 class="title text--primary mb-2">바닐라아메리카노 커피</h2>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn color="red white--text">주문</v-btn>
+                        </v-card-actions>
+                    </v-col>
+                    <v-col>
+                        <v-card max-width="200">
+                            <v-img
+                                    src="./img/gabea4.png"
+                            ></v-img>
+                        </v-card>
+                        <v-card-text>
+                            <h2 class="title text--primary mb-2">꿀아메리카노 커피</h2>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn color="primary white--text">주문</v-btn>
+                        </v-card-actions>
+                    </v-col>
+                </v-row>
+                </v-container>
+
                 <v-divider></v-divider>
-                <h1 class="display-3 my-4">안녕하세요</h1>
-                <p class="body-3 my-4">마스터 페이지 입니다.</p>
+<!--                <h1 class="display-3 my-4">감사합니다.</h1>-->
+<!--                <p class="body-3 my-4">주앙커피 입니다.</p>-->
             </v-container>
         </v-main>
 
