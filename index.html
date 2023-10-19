@@ -12,14 +12,32 @@
 <div id="app">
     <v-app>
         <!-- 앱 바 색상을 primary로 설정하고 fixed로 위치 고정 -->
-        <v-app-bar app color="primary" dark fixed>
+        <v-app-bar app color="brown" dark fixed>
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
             <v-toolbar-title>주앙커피</v-toolbar-title>
             <!-- 우측에 추가메뉴 아이콘을 넣기 위해 v-spacer 엘리먼트 사용 -->
             <v-spacer></v-spacer>
-            <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
+            <v-btn variant="text" prepend-icon="mdi-home" color="brown">HOME</v-btn>
+            <v-btn variant="text" prepend-icon="mdi-power" color="brown">LOGIN</v-btn>
+            <v-btn icon color="white">
+                <v-icon>mdi-account</v-icon>
             </v-btn>
+            <v-menu left bottom>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                        <v-icon>mdi-dots-vertical</v-icon>
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item v-for="n in 4" :key="n" @click="() => {}">
+                        Option {{ n }}
+                    </v-list-item>
+                </v-list>
+            </v-menu>
+<!--            <v-btn icon>-->
+<!--                <v-icon>mdi-dots-vertical</v-icon>-->
+<!--            </v-btn>-->
         </v-app-bar>
 
         <!-- v-main -->
@@ -92,7 +110,13 @@
         </v-main>
 
         <!-- footer 색상을 secondary로 설정하고 fixed로 위치 고정 -->
-        <v-footer color="secondary" dark fixed>
+        <v-footer color="brown" dark fixed>
+
+            <v-row no-gutters justify="center">
+                <v-col cols="12" class="text-center">
+                    {{ new Date().getFullYear() }} — powered by <strong>주앙</strong>
+                </v-col>
+            </v-row>
             <div class="mx-auto">Copyright &copy;</div>
         </v-footer>
     </v-app>
