@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link
+            href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<div id="app">
+    <v-tabs v-model="tabs">
+        <v-tab v-for="item in tabItems" :key="item"> {{ item }} </v-tab>
+    </v-tabs>
+
+    <v-tabs-items v-model="tabs">
+        <v-tab-item> Content 1 </v-tab-item>
+        <v-tab-item> Content 2 </v-tab-item>
+        <v-tab-item :transition="false">
+            Content 3
+            <v-btn @click="tabs = 0">Link to Tab 1</v-btn>
+        </v-tab-item>
+    </v-tabs-items>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        vuetify: new Vuetify(),
+        data: {
+            tabs: 1, // Opens Tab 2 by default. 0-indexed.
+            tabItems: ["Tab 1", "Tab 2", "Tab 3"],
+        },
+    });
+</script>
+</body>
+</html>

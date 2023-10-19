@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <title>라우터 연습</title>
+    <style>
+        .card{
+            width: 340px;
+            top: 20px;
+            padding: 10px;
+            margin: auto;
+        }
+
+        #app {
+            width: 500px;
+            height: 700px;
+            margin: auto;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+    <v-tabs>
+        <v-tab key="tab-1" to="/">tab 1</v-tab>
+        <v-tab key="tab-2" to="/dog">tab 2</v-tab>
+    </v-tabs>
+
+    <router-view></router-view>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+<script>
+    // Motorcycle Page
+    const motorcycle = {
+        template: '<v-card> <img src="http://loremflickr.com/320/240/motorcycle"  alt="오토바이"/> </v-card>'
+    }
+
+    // Dog page
+    const dog = {
+        template: '<v-card> <img src="http://loremflickr.com/320/240/dog"  alt="개"/> </v-card>',
+    }
+
+    // Vue Router
+    Vue.use(VueRouter);
+    const router = new VueRouter({
+        routes: [{
+            path: '/',
+            component: motorcycle,
+            vuetify: new Vuetify()
+        }, {
+            path: '/dog',
+            component: dog,
+            vuetify: new Vuetify()
+        }]
+    })
+
+    // Main Vue instance
+    new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+        router
+    });
+
+</script>
+</body>
+</html>
