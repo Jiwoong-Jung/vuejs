@@ -17,8 +17,8 @@
             <v-toolbar-title>주앙커피</v-toolbar-title>
             <!-- 우측에 추가메뉴 아이콘을 넣기 위해 v-spacer 엘리먼트 사용 -->
             <v-spacer></v-spacer>
-            <v-btn variant="text" prepend-icon="mdi-home" color="brown">HOME</v-btn>
-            <v-btn variant="text" prepend-icon="mdi-power" color="brown">LOGIN</v-btn>
+            <v-btn variant="text" prepend-icon="mdi-home" color="brown" @click="toHome">홈</v-btn>
+            <v-btn variant="text" prepend-icon="mdi-power" color="brown" @click="toPage1">로그인</v-btn>
             <v-btn icon color="white">
                 <v-icon>mdi-account</v-icon>
             </v-btn>
@@ -144,6 +144,15 @@
                     console.log(res);
                 })
 
+            },
+            toHome() {
+                alert("home")
+            },
+            toPage1() {
+                alert("Page1")
+            },
+            toPage2() {
+                alert("Page2")
             }
 
         }
