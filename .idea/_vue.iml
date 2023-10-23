@@ -12,13 +12,9 @@
     <orderEntry type="library" name="@mdi/font" level="application" />
     <orderEntry type="library" name="vuetify" level="application" />
     <orderEntry type="library" name="require.js" level="application" />
+    <orderEntry type="library" name="jquery-3.5.1" level="application" />
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="axios" level="application" />
     <orderEntry type="library" name="vue-router" level="application" />
-    <orderEntry type="library" name="vue" level="application" />
-    <orderEntry type="library" name="vuetify" level="application" />
-    <orderEntry type="library" name="axios" level="application" />
-    <orderEntry type="library" name="vue-router" level="application" />
-    <orderEntry type="library" name="@mdi/font" level="application" />
   </component>
 </module>
