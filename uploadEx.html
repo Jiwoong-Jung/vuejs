@@ -53,27 +53,31 @@
                 console.log('files', this.files)
                 this.files.forEach((file, f) => {
                     this.readers[f] = new FileReader();
-                    this.readers[f].onloadend = async (e) => {
+                    this.readers[f].onloadend = (e) => {
                         let fileData = this.readers[f].result
                         let imgRef = this.$refs.file[f]
                         imgRef.src = fileData
                         console.log(fileData)
                         // send to server here...
-
-                        await axios.post('http://localhost:8887/uploadAjax',
-                            fileData , {
-                                headers: {
-                                    'Content-Type': 'multipart/form-data'
-                                }
-                            }
-                        ).then(response => {
-                            console.log('SUCCESS!!');
-                            console.log(response.data)
-                        })
-                            .catch(function () {
-                                console.log('FAILURE!!');
-                            });
                         //실제 업로드 부분
+                        //upload ajax
+                        $.ajax({
+                            url: 'http://localhost:8887/uploadAjax',
+                            processData: false,
+                            contentType: false,
+                            data: this.files,
+                            type: 'POST',
+                            dataType:'json',
+                            success: function(result){
+                                console.log(result);
+                                //나중에 화면 처리
+                                // showUploadedImages(result);
+                            },
+                            error: function(jqXHR, textStatus, errorThrown){
+                                console.log(textStatus);
+                            }
+
+                        }); //$.ajax
                     }
 
                     this.readers[f].readAsDataURL(this.files[f]);
