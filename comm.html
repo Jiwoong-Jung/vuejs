@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Event Bus Sample</title>
+</head>
+<body>
+<div id="app">
+    <child-component></child-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script>
+    let eb = new Vue();
+
+    Vue.component('child-component', {
+        template: `<button v-on:click="showLog">show</button>`,
+        methods: {
+            showLog: function () {
+                eb.$emit('triggerEvent', 100);
+            }
+        }
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '안녕? 테스트입니다'
+        },
+        created: function () {
+            eb.$on('triggerEvent', function (val) {
+                console.log("전달 값: ", val);
+            });
+        }
+        // methods: {
+        //     printText: function () {
+        //         alert("받았다");
+        //     }
+        // }
+    })
+</script>
+</body>
+</html>
