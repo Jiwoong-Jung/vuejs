@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">{{msg}}
+    <test v-bind:ccc="msg"></test>
+</div>
+<script src="http://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script>
+    let eb = new Vue();
+    Vue.component('test', {
+        props:['ccc'],
+        template: `<div><div>{{ddd}}</div>
+                    <button v-on:click="btn">클릭</button></div>`,
+        data: function() {
+            return {
+                ddd: "전역"+this.ccc
+            }
+        },
+        methods: {
+            btn: function () {
+                console.log("btn");
+                eb.$emit("eee", this.ddd);
+            }
+        }
+    });
+    new Vue({
+       el: "#app",
+       data: {
+           msg: "뷰 연습"
+       },
+       created: function() {
+           eb.$on('eee', function(vvv) {
+               console.log("나온다", vvv);
+           })
+       }
+
+    });
+</script>
+</body>
+</html>
