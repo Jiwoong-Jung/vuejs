@@ -126,11 +126,12 @@
         methods: {
             handleClick(row) {
                 // set active row and deselect others
-                this.desserts.map((item, index) => {
-                    item.selected = item === row
-
-                    this.$set(this.desserts, index, item)
-                })
+                // this.desserts.map((item, index) => {
+                //     console.log(row, index);
+                //     item.selected = item === row
+                //     console.log(item.selected);
+                //     this.$set(this.desserts, index, item)
+                // })
 
                 // or just do something with your current clicked row item data
                 console.log(row.id)
