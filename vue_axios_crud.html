@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function loadFrame (elm){
+            var frame1 = document.getElementById('frame1');
+            frame1.src = elm.dataset.src;
+        }
+
+    </script>
+</head>
+<body>
+<div id="app">
+    <p>{{advice}}</p>
+    <input />
+    <button v-on:click="bbb">전체 보기</button><button>입력</button>
+    <hr>
+    id<input type="text" name="id">
+    title<input type="text" name="title">
+    author<input type="text" name="author">
+    content<input type="text" name="content">
+
+    <button onclick="getComment()" type="button">GET</button>
+    <button onclick="submit()" type="button">POST</button>
+    <button onclick="putCommend()" type="button">PUT</button>
+    <button onclick="deleteComment()" type="button">DELETE</button>
+    <div class="print-data"><ul></ul></div>
+</div>
+
+<button id="b1" data-src="http://localhost:4000/posts" onclick="loadFrame(this)">Button 1</button>
+<button id="b2" data-src="http://www.example.com" onclick="loadFrame(this)">Button 2</button>
+<iframe id="frame1" scrolling="auto"></iframe>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    new Vue({
+        data: {advice: '데이터 로딩 중...'},
+        // created() {
+        //     setInterval(() => {
+        //         this.bbb()
+        //     }, 2000)
+        // },
+        methods: {
+            aaa: function() {
+                console.log("나온다")
+            },
+            bbb: function() {
+                axios.get('http://localhost:4000/posts')
+                    .then((res) => {
+                        console.log(res.data.content);
+                        this.advice = res.data;
+                    })
+                    .catch((err) => {console.log(err);})
+            }
+        },
+        created: function() {
+            axios.get('http://localhost:4000/posts')
+            .then((res) => {
+                console.log(res);
+                this.advice = res.data[0].content;
+            })
+            .catch((err) => {console.log(err);})
+        }
+        // created() {
+        //     axios.get('https://api.adviceslip.com/advice')
+        //         .then((res) => {
+        //             console.log(res);
+        //             this.advice = res.data.slip.advice;
+        //         })
+        //         .catch((err) => {console.log(err);})
+        // }
+    }).$mount('#app');
+
+
+    // --- axios 편의성 함수 사용
+    function submit() {
+
+        const inputTitle = document.querySelector('input[name=title]')
+        const inputAuthor = document.querySelector('input[name=author]')
+        const inputContent = document.querySelector('input[name=content]')
+
+        const postParams = {
+            title: inputTitle.value,
+            author: inputAuthor.value,
+            content: inputContent.value
+        }
+
+        axios.post(`http://localhost:4000/posts`, postParams)
+            .then(res => {
+                console.log('res: ', res);
+            })
+            .catch(error => {
+                console.log('error: ', error);
+            })
+    }
+    function putCommend() {
+        const inputId = document.querySelector('input[name=id]')
+        const inputTitle = document.querySelector('input[name=title]')
+        const inputAuthor = document.querySelector('input[name=author]')
+        const inputContent = document.querySelector('input[name=content]')
+
+        const postParams = {
+            title: inputTitle.value,
+            author: inputAuthor.value,
+            content: inputContent.value
+        }
+
+        axios.put(`http://localhost:4000/posts/${inputId.value}`, postParams)
+            .then(res => {
+                console.log('res: ', res);
+            })
+            .catch(error => {
+                console.log('error: ', error);
+            })
+    }
+    function getComment() {
+        let dataCollection = []
+        axios.get('http://localhost:4000/posts')
+            .then(res => {
+                dataCollection = res.data
+                console.log('dataCollection: ', dataCollection);
+                dataCollection.forEach(data => {
+                    document.querySelector('.print-data').innerHTML
+                        += `<li>title: ${data.id} <br>title: ${data.title} <br> content: ${data.content}</li>`
+                })
+            })
+            .catch((error) => console.log(error))
+    }
+
+    function deleteComment() {
+        const inputId = document.querySelector('input[name=id]')
+        const val = inputId.value
+        console.log(val)
+        axios({
+            method: 'delete',
+            url: `http://localhost:4000/posts/${val}`,
+        })
+            .then(res => console.log(res))
+            .catch(console.error)
+    }
+</script>
+</body>
+</html>
