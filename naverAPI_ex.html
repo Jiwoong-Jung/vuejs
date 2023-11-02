@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>인천 차이나타운</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container" id="toc-content">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div id="main" itemscope itemtype="https://schema.org/TechArticle">
+                <div style="display:none;">
+                    <div itemprop="image" itemscope, itemtype="http://schema.org/ImageObject">
+                    </div>
+                </div>
+                <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=83bfuniegk"></script>
+
+                <section class="tutorial-section">
+                    <header></header>
+                    <article>
+
+                        <style type="text/css">
+                            #wrap .buttons { position:absolute;top:0;left:0;z-index:1000;padding:5px; }
+                            #wrap .buttons .control-btn { margin:0 5px 5px 0; }
+                        </style>
+                        <div id="wrap" class="section">
+                            <h2>인천차이나 타운</h2>
+                            <div id="map" style="width:80%;height:600px;">
+                                <div class="buttons">
+                                    <input id="NORMAL" type="button" value="일반지도" class="control-btn control-on" />
+                                    <input id="TERRAIN" type="button" value="지형도" class="control-btn" />
+                                    <input id="SATELLITE" type="button" value="위성지도" class="control-btn" />
+                                    <input id="HYBRID" type="button" value="겹쳐보기" class="control-btn" />
+                                </div>
+                            </div>
+                            <code id="snippet" class="snippet"></code>
+                        </div>
+                        <script id="code">
+                            var map = new naver.maps.Map('map', {
+                                center: new naver.maps.LatLng(37.475809644033, 126.61986990073),
+                                zoom: 15
+                            });
+
+                            var btns = $(".buttons > input");
+                            btns.on("click", function(e) {
+                                e.preventDefault();
+
+                                var mapTypeId = this.id;
+
+                                if (map.getMapTypeId() !== naver.maps.MapTypeId[mapTypeId]) {
+                                    map.setMapTypeId(naver.maps.MapTypeId[mapTypeId]); // 지도 유형 변경하기
+
+                                    btns.removeClass("control-on");
+                                    $(this).addClass("control-on");
+                                }
+                            });
+                        </script>
+                    </article>
+                </section>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<script>
+    $( function () {
+        $( "[id*='$']" ).each( function () {
+            var $this = $( this );
+
+            $this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+        } );
+
+        $('pre').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        $( "#main span[id^='toc']" ).addClass( "toc-shim" );
+        // $( '.dropdown-toggle' ).dropdown();
+        $( "table" ).each( function () {
+            var $this = $( this );
+            $this.addClass('table');
+        } );
+    } );
+</script>
+</body>
+</html>
