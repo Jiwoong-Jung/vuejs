@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        //.v-move {
+        //    transition: 0.5s;
+        //}
+        .v-enter-active, .v-enter-active {
+            transition: 0.5s;
+        }
+        .v-enter, .v-leave-to {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="show=!show">변경</button>
+    <transition>
+        <div v-show="show">트랜지션</div>
+    </transition>
+</div>
+<script src="http://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            show: true
+        }
+    });
+</script>
+</body>
+</html>
