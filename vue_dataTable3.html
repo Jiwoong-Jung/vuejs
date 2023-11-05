@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"/>
     <title>vuetify 테이블1</title>
     <style>
         .selected {
@@ -24,13 +24,13 @@
                 item-key="id"
                 class="elevation-1"
                 :footer-props="{
-        showFirstLastPage: true,
-        firstIcon: 'mdi-arrow-collapse-left',
-        lastIcon: 'mdi-arrow-collapse-right',
-        prevIcon: 'mdi-minus',
-        nextIcon: 'mdi-plus',
-           'items-per-page-text':'products per page',
-      }"
+                    showFirstLastPage: true,
+                    firstIcon: 'mdi-arrow-collapse-left',
+                    lastIcon: 'mdi-arrow-collapse-right',
+                    prevIcon: 'mdi-minus',
+                    nextIcon: 'mdi-plus',
+                              'items-per-page-text':'products per page',
+                 }"
                 :class="[desserts.selected && 'selected']"
                 @click:row="handleClick"
         ></v-data-table>
@@ -48,20 +48,20 @@
     new Vue({
         el: '#app',
         vuetify: new Vuetify(),
-        data () {
+        data() {
             return {
 
                 headers: [
-                    { text: 'ID', value: 'id' },
+                    {text: 'ID', value: 'id'},
                     {
                         text: '제목',
                         align: 'start',
                         value: 'title',
                     },
-                    { text: '내용', value: 'content' },
-                    { text: '저자', value: 'author' },
+                    {text: '내용', value: 'content'},
+                    {text: '저자', value: 'author'},
                 ],
-                desserts:  []
+                desserts: []
                 // desserts: [
                 //     {
                 //         name: 'Frozen Yogurt',
@@ -106,12 +106,12 @@
                 // ],
             }
         },
-        computed:{
-            pageTxt(){
+        computed: {
+            pageTxt() {
                 return this.$vuetify.dataFooter.pageText
             }
         },
-        created: function() {
+        created: function () {
             axios.get('http://localhost:4001/todo')
                 .then((res) => {
                     console.log(res);
@@ -121,7 +121,9 @@
                     }
                     // this.dessert = res.data[0];
                 })
-                .catch((err) => {console.log(err);})
+                .catch((err) => {
+                    console.log(err);
+                })
         },
         methods: {
             handleClick(row) {
